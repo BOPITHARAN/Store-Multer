@@ -1,0 +1,16 @@
+.App {
+  text-align: center;
+  display: flex;
+  width: 100%;
+}
+.addproduct{
+  width: 50%;
+  background-color: aqua;
+}
+.getproduct{
+  width: 50%;
+  background-color: aqua;
+  table{
+    width: 100%;
+  }
+}

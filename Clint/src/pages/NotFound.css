@@ -1,0 +1,21 @@
+.notfound-container {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* background: #111; */
+    color: white;
+}
+
+.notfound-container h1 {
+    font-size: 100px;
+}
+
+.home-btn {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background: red;
+    color: white;
+    text-decoration: none;
+}

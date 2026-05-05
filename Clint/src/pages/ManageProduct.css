@@ -1,0 +1,262 @@
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    position: relative;
+    z-index: 1;
+}
+
+/* 🔥 BACKGROUND IMAGE + BLUR */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+
+    background:
+        linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+        /* overlay dark */
+        url("../assets/bacimg.jpg");
+    /* 👉 image */
+
+    background-size: cover;
+    background-position: center;
+
+    filter: blur(8px);
+    /* 🔥 blur effect */
+    transform: scale(1.1);
+    /* prevent edges cut */
+
+    z-index: -1;
+}
+
+.container {
+    width: 80%;
+    /* max-width: 1100px; */
+    margin: 40px auto;
+    padding: 25px;
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+}
+
+.title {
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+.add-btn {
+    padding: 12px 22px;
+    background: linear-gradient(45deg, #00c6ff, #0072ff);
+    color: white;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+}
+
+/* TABLE */
+.table-wrapper {
+    overflow-x: auto;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.table thead {
+    background: #1e293b;
+    color: white;
+}
+
+.table th,
+.table td {
+    padding: 14px;
+    text-align: center;
+}
+
+.table tbody tr:hover {
+    background: #f1f5f9;
+}
+
+/* BUTTONS */
+.table button {
+    margin: 0 5px;
+    padding: 6px 10px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.table button:first-child {
+    background: #facc15;
+}
+
+.table button:last-child {
+    background: #ef4444;
+    color: white;
+}
+
+/* PAGINATION */
+.pagination {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.pagination button {
+    padding: 8px 16px;
+    border: none;
+    background: #0072ff;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.pagination button:disabled {
+    background: #ccc;
+}
+
+/* OVERLAY */
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.65);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(6px);
+    animation: fadeIn 0.25s ease;
+}
+
+/* MODAL BOX */
+.modal {
+    background: #ffffff;
+    padding: 25px;
+    width: 340px;
+    border-radius: 18px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    animation: scaleUp 0.25s ease;
+}
+
+/* TITLE */
+.modal h2 {
+    margin-bottom: 15px;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+/* INPUT */
+.modal input {
+    width: 100%;
+    margin-bottom: 12px;
+    padding: 11px;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    transition: 0.2s;
+}
+
+.modal input:focus {
+    border-color: #0072ff;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(0, 114, 255, 0.2);
+}
+
+/* BUTTONS */
+.modal-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.modal-buttons button {
+    padding: 9px 16px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    transition: 0.2s;
+}
+
+/* CANCEL */
+.modal-buttons button:first-child {
+    background: #e5e7eb;
+}
+
+/* SUBMIT */
+.modal-buttons button:last-child {
+    background: linear-gradient(45deg, #22c55e, #16a34a);
+    color: white;
+}
+
+/* HOVER */
+.modal-buttons button:hover {
+    transform: translateY(-2px);
+}
+
+/* ANIMATION */
+@keyframes fadeIn {
+    from {
+        opacity: 0
+    }
+
+    to {
+        opacity: 1
+    }
+}
+
+@keyframes scaleUp {
+    from {
+        transform: scale(0.9);
+        opacity: 0;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+
+.top-bar {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    gap: 10px;
+}
+
+.search-input {
+    flex: 1;
+    padding: 10px 15px;
+    border-radius: 25px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    outline: none;
+}
+
+.search-input:focus {
+    border-color: #0072ff;
+    box-shadow: 0 0 5px rgba(0,114,255,0.3);
+}
+.search-btn {
+    padding: 10px 15px;
+    background: #22c55e;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.clear-btn {
+    padding: 10px 14px;
+    background: #ef4444;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.clear-btn:hover {
+    background: #dc2626;
+}

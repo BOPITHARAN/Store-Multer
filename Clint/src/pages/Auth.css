@@ -1,0 +1,167 @@
+/* Background */
+.auth-wrapper {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Card */
+.auth-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(15px);
+    padding: 40px;
+    width: 320px;
+    border-radius: 20px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    color: white;
+}
+
+/* Title */
+.auth-title {
+    font-size: 28px;
+    margin-bottom: 5px;
+}
+
+/* Subtitle */
+.auth-subtitle {
+    font-size: 14px;
+    margin-bottom: 25px;
+    opacity: 0.8;
+}
+
+/* Input group */
+.input-group {
+    margin-bottom: 15px;
+}
+
+/* Input */
+.auth-input {
+    width: 100%;
+    padding: 12px;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    font-size: 14px;
+}
+
+/* Placeholder */
+.auth-input::placeholder {
+    color: #eee;
+}
+
+/* Button */
+.auth-button {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 10px;
+    background: #ff7a18;
+    background: linear-gradient(45deg, #ff7a18, #ffb347);
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+/* Button hover */
+.auth-button:hover {
+    transform: scale(1.05);
+    opacity: 0.9;
+}
+
+/* Footer */
+.auth-footer {
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+/* Link */
+.auth-link {
+    color: #ffd369;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.auth-link:hover {
+    text-decoration: underline;
+}
+
+/* file input + select match style */
+.auth-input[type="file"],
+.auth-input select {
+    cursor: pointer;
+}
+
+/* improve dropdown look */
+select.auth-input {
+    appearance: none;
+}
+
+/* Profile upload wrapper */
+.profile-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+/* Circle avatar */
+.profile-circle {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    overflow: hidden;
+    border: 2px dashed #fff;
+    transition: 0.3s;
+}
+
+/* hover effect */
+.profile-circle:hover {
+    transform: scale(1.05);
+}
+
+/* image inside circle */
+.profile-circle img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* plus icon */
+.profile-circle span {
+    font-size: 30px;
+    color: white;
+    opacity: 0.8;
+}
+
+/* 🔥 Fix select dropdown background + text */
+select.auth-input {
+    width: 100%;
+    padding: 12px;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    font-size: 14px;
+
+    /* remove default browser style */
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+/* dropdown options styling */
+select.auth-input option {
+    background: #3d20200e;
+    color: white;
+}
