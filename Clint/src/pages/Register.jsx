@@ -40,17 +40,16 @@ function Register() {
 
             alert(res.data.message);
 
-            // 🔄 reset form
-            setForm({
-                Username: "",
-                Email: "",
-                Password: "",
-                Role: "User"
-            });
-            setPhoto(null);
-            setPreview(null);
+            // ✅ AUTO LOGIN
+            localStorage.setItem("token", res.data.token);
+            localStorage.setItem("user", JSON.stringify(res.data.user));
 
-            navigate("/login");
+            // ✅ redirect
+            if (res.data.user.role === "Admin") {
+                navigate("/manageproducts");
+            } else {
+                navigate("/products");
+            }
 
         } catch (err) {
             alert(err.response?.data?.message || "Registration failed");
@@ -90,43 +89,43 @@ function Register() {
                 </div>
 
                 <div className="input-group">
-    <input
-        className="auth-input"
-        placeholder="Username"
-        value={form.Username}
-        onChange={e => setForm({ ...form, Username: e.target.value })}
-    />
-</div>
+                    <input
+                        className="auth-input"
+                        placeholder="Username"
+                        value={form.Username}
+                        onChange={e => setForm({ ...form, Username: e.target.value })}
+                    />
+                </div>
 
-<div className="input-group">
-    <input
-        className="auth-input"
-        placeholder="Email"
-        value={form.Email}
-        onChange={e => setForm({ ...form, Email: e.target.value })}
-    />
-</div>
+                <div className="input-group">
+                    <input
+                        className="auth-input"
+                        placeholder="Email"
+                        value={form.Email}
+                        onChange={e => setForm({ ...form, Email: e.target.value })}
+                    />
+                </div>
 
-<div className="input-group">
-    <input
-        className="auth-input"
-        type="password"
-        placeholder="Password"
-        value={form.Password}
-        onChange={e => setForm({ ...form, Password: e.target.value })}
-    />
-</div>
+                <div className="input-group">
+                    <input
+                        className="auth-input"
+                        type="password"
+                        placeholder="Password"
+                        value={form.Password}
+                        onChange={e => setForm({ ...form, Password: e.target.value })}
+                    />
+                </div>
 
-<div className="input-group">
-    <select
-        className="auth-input"
-        value={form.Role}
-        onChange={e => setForm({ ...form, Role: e.target.value })}
-    >
-        <option value="User">User</option>
-        <option value="Admin">Admin</option>
-    </select>
-</div>
+                <div className="input-group">
+                    <select
+                        className="auth-input"
+                        value={form.Role}
+                        onChange={e => setForm({ ...form, Role: e.target.value })}
+                    >
+                        <option value="User">User</option>
+                        <option value="Admin">Admin</option>
+                    </select>
+                </div>
 
                 <button className="auth-button" onClick={handleRegister}>
                     Register

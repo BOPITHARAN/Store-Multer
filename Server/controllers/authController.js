@@ -10,7 +10,6 @@ exports.register = (req, res) => {
         return res.status(400).json({ message: "All fields are required" });
     }
 
-    // 🔍 Check existing email
     const checkQuery = "SELECT * FROM users WHERE Email = ?";
     db.query(checkQuery, [Email], (err, result) => {
         if (err) return res.status(500).json({ message: "DB error" });
@@ -19,10 +18,7 @@ exports.register = (req, res) => {
             return res.status(400).json({ message: "Email already exists" });
         }
 
-        // 🔐 Hash password
         const hashed = bcrypt.hashSync(Password, 10);
-
-        // 📸 Photo optional
         const PhotoURL = req.file ? req.file.filename : null;
 
         const insertQuery = `
@@ -33,46 +29,36 @@ exports.register = (req, res) => {
         db.query(
             insertQuery,
             [Username, Email, hashed, Role || "User", PhotoURL],
-            (err) => {
+            (err, result) => {
                 if (err) {
                     console.error(err);
                     return res.status(500).json({ message: "Insert failed" });
                 }
 
+                // ✅ CREATE TOKEN
+                const token = jwt.sign(
+                    { id: result.insertId },
+                    process.env.JWT_SECRET,
+                    { expiresIn: "1h" }
+                );
+
+                // ✅ RETURN USER + TOKEN
                 res.status(201).json({
-                    message: "User registered successfully"
+                    message: "User registered successfully",
+                    token,
+                    user: {
+                        id: result.insertId,
+                        username: Username,
+                        email: Email,
+                        role: Role || "User",
+                        photoURL: PhotoURL
+                    }
                 });
             }
         );
     });
 };
 
-// exports.register = (req, res) => {
-//     const { Username, Email, Password, Role, PhotoURL } = req.body;
-
-//     if (!Username || !Email || !Password) {
-//         return res.status(400).send({ error: 'Missing fields' });
-//     }
-
-//     const hashed = bcrypt.hashSync(Password, 10);
-//     const finalRole = Role || "User";
-
-//     // 👉 IMPORTANT: optional handling
-//     const finalPhoto = PhotoURL || null;
-
-//     const q = `
-//         INSERT INTO users (Username, Email, Password, Role, PhotoURL)
-//         VALUES (?, ?, ?, ?, ?)
-//     `;
-
-//     db.query(q, [Username, Email, hashed, finalRole, finalPhoto], (err, result) => {
-//         if (err) return res.status(500).json(err);
-
-//         res.status(201).json({
-//             message: 'User created successfully'
-//         });
-//     });
-// };
 
 exports.login = (req, res) => {
     const { Username, Password } = req.body;
